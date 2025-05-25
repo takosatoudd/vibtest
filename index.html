@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vibration test</title>
+    <style>
+      button {
+          padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+<script>
+  function $(sel) {
+      return document.querySelector(sel)
+  }
+
+  let timer = 0
+  
+  function doVib() {
+      console.log("vibrate")
+      navigator.vibrate(1500)
+      timer = setTimeout(doVib, 2000)
+  }
+  
+  $('#start').onclick = () => {
+      if (timer == 0) {
+          doVib()
+      }
+  }
+
+  $('#stop').onclick = () => {
+      clearTimeout(timer)
+      timer = 0
+  }
+</script>
+
+  </body>
+</html>
